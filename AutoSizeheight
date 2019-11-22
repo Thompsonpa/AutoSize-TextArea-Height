@@ -7,14 +7,14 @@
             var lh = getLineHeightInPixels(elem);
             var nol = getNumberOfLines(elem);
             var ht = lh * nol;
-            elem.style.height = ht + 50 + 'px';
+            elem.style.height = ht + 10 + 'px';
         });
 
         function autoHeight(e) {
             var lh = getLineHeightInPixels(e.target);
             var nol = getNumberOfLines(e.target);
             var ht = lh * nol;
-            e.target.style.height = ht + 50 + 'px';
+            e.target.style.height = ht + 10 + 'px';
         }
 
         function getNumberOfLines(el) {
