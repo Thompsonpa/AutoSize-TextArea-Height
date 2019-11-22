@@ -1,0 +1,50 @@
+<script>
+        document.getElementById('ctl00_ContentPlaceHolder1_txtDescription').addEventListener('input', autoHeight, false);
+        document.addEventListener('DOMContentLoaded', function () { document.getElementById('ctl00_ContentPlaceHolder1_txtDescription').style.height = getLineHeightInPixels(document.getElementById('ctl00_ContentPlaceHolder1_txtDescription')) + 'px'; }, false);
+
+        $(document).ready(function () {
+            var elem = document.getElementById('ctl00_ContentPlaceHolder1_txtDescription');
+            var lh = getLineHeightInPixels(elem);
+            var nol = getNumberOfLines(elem);
+            var ht = lh * nol;
+            elem.style.height = ht + 50 + 'px';
+        });
+
+        function autoHeight(e) {
+            var lh = getLineHeightInPixels(e.target);
+            var nol = getNumberOfLines(e.target);
+            var ht = lh * nol;
+            e.target.style.height = ht + 50 + 'px';
+        }
+
+        function getNumberOfLines(el) {
+            var text = el.value
+            var lines = text.split(/\r|\n|\f|\t|\v/);
+            console.log(lines.length);
+            return lines.length;
+        }
+
+
+        function getLineHeightInPixels(el) {
+
+            var tempDiv = document.createElement('div');
+
+            tempDiv.style.visibility = 'hidden';
+
+            tempDiv.style.fontFamily = getComputedStyle(el).getPropertyValue('font-family');
+            tempDiv.style.fontSize = getComputedStyle(el).getPropertyValue('font-size');
+            tempDiv.style.lineHeight = getComputedStyle(el).getPropertyValue('line-height');
+            tempDiv.style.fontVariant = getComputedStyle(el).getPropertyValue('font-variant');
+            tempDiv.style.fontStyle = getComputedStyle(el).getPropertyValue('font-style');
+
+            tempDiv.innerText = 'abcdefghijklmnopqrstuwxyz123456790-/:;?.';
+
+            document.documentElement.appendChild(tempDiv);
+
+            var ht = parseInt(getComputedStyle(tempDiv).getPropertyValue('height'))
+
+            document.documentElement.removeChild(tempDiv);
+            return (ht);
+
+        }
+    </script>
