@@ -7,21 +7,22 @@
             var lh = getLineHeightInPixels(elem);
             var nol = getNumberOfLines(elem);
             var ht = lh * nol;
-            elem.style.height = ht + 10 + 'px';
+            elem.style.height = ht +  'px';
         });
 
         function autoHeight(e) {
             var lh = getLineHeightInPixels(e.target);
             var nol = getNumberOfLines(e.target);
             var ht = lh * nol;
-            e.target.style.height = ht + 10 + 'px';
+            e.target.style.height = ht + 'px';
         }
 
         function getNumberOfLines(el) {
-            var text = el.value
+            var text = el.value;
             var lines = text.split(/\r|\n|\f|\t|\v/);
-            console.log(lines.length);
-            return lines.length;
+            var liness = text.split(/\./);
+            console.log(lines.length + " - " + liness.length/2);
+            return lines.length + 2 ;
         }
 
 
@@ -37,7 +38,7 @@
             tempDiv.style.fontVariant = getComputedStyle(el).getPropertyValue('font-variant');
             tempDiv.style.fontStyle = getComputedStyle(el).getPropertyValue('font-style');
 
-            tempDiv.innerText = 'abcdefghijklmnopqrstuwxyz123456790-/:;?.';
+            tempDiv.innerText = 'abcdefghijklmnopqrstuwxyz123456790-/:;?.|!@()*&^%$#_=+][{}<>,';
 
             document.documentElement.appendChild(tempDiv);
 
